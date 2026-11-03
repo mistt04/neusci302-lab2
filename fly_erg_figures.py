@@ -1,29 +1,3 @@
-"""
-Fly ERG figures for NEUSCI 302 Lab 2: pulse amplitude series and ramp rate series.
-
-WHAT YOU NEED
-  python 3, numpy, matplotlib (nothing else).
-  Two text files exported from LabChart, one for Pulses and one for Ramps:
-    File > Export As..., format "LabChart Text File", then in the dialog
-    tick "Block header" and "Time", leave channels on all and "Whole file".
-
-RUN
-  python fly_erg_figures.py --pulses "AU26 Lab 2 Data Pulses.txt" \
-                            --ramps  "AU26 Lab 2 Data Ramps.txt"  --out figures
-
-  Optional: --filter sg (default), median or boxcar.
-
-WHAT IT MAKES (in the --out folder)
-  fig_pulse_series.png/.pdf   Figure 2: pulse amplitude series
-  fig_ramp_series.png/.pdf    Figure 3: ramp rate series
-  pulse_sweeps.csv, ramp_sweeps.csv   one row per sweep (subpage), for Excel
-
-HOW EACH NUMBER IS MADE (state this in your Methods)
-  Channel 2 is the ERG, Channel 1 is the LED command.
-  Peaks and troughs are found on a filtered copy of the ERG, inside a fixed time
-  window after each light change (WINDOWS below). The reference level is the mean
-  of the UNFILTERED ERG just before the change. Amplitude = extreme - reference.
-"""
 import argparse
 import csv
 import os
